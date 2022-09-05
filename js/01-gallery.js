@@ -26,7 +26,8 @@ function openModalGallery(event) {
   if (event.target.nodeName !== 'IMG') return;
 
   const instance = basicLightbox.create(`<img src='${event.target.dataset.source}' width='1280' height='auto'>`, {
-    onShow: () => window.addEventListener('keydown', onEsc)
+    onShow: () => window.addEventListener('keydown', onEsc),
+    onClose: () => window.removeEventListener('keydown', onEsc)
   });
 
   function onEsc(event) {
